@@ -8,6 +8,10 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_C_COMPILER csky-linux-gcc)
+set(CMAKE_CXX_COMPILER csky-linux-g++)
+
 #--------------------------------------------------------------------------
 
 add_library(SSD1306 STATIC lib/FileDescriptor.cxx
@@ -43,3 +47,5 @@ target_link_libraries(testbitmap SSD1306)
 add_executable(testoled examples/testoled.cxx examples/LinuxKeys.cxx)
 target_link_libraries(testoled SSD1306)
 
+add_executable(badapple examples/badapple.cxx examples/LinuxKeys.cxx)
+target_link_libraries(badapple SSD1306)
